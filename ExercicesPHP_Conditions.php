@@ -14,7 +14,7 @@ else {
 }
 
 // Exercice 2
-$isEasy = False;
+(bool) $isEasy = False;
 
 if ($isEasy === True ) {
     var_dump("C'est facile !");
@@ -29,13 +29,13 @@ echo ($isEasy) ? 'C\'est facile !' : 'C\'est difficile !';
 $age = 7 ;
 $gender = "Homme";
 
-if ( $age >= 18 AND $gender == "Homme" ) {
+if ( $age >= 18 AND $gender === "Homme" ) {
     var_dump("Vous êtes un homme et vous êtes majeur");
 }
-elseif ( $age < 18 AND $gender == "Homme" ) {
+elseif ( $age < 18 AND $gender === "Homme" ) {
     var_dump("Vous êtes un homme et vous êtes mineur");
 }
-elseif ( $age >= 18 AND $gender == "Femme" ) {
+elseif ( $age >= 18 AND $gender === "Femme" ) {
     var_dump("Vous êtes une femme et vous êtes majeure");
 }
 else {
@@ -43,36 +43,38 @@ else {
 }
 
 //Exercice 4
-$magnitude = 7;
+$magnitude = 6;
 
 switch ($magnitude) {
     case 1 :
         var_dump("Micro-séisme impossible à ressentir.");
-    break;
+        break;
     case 2 :
         var_dump("Micro-séisme impossible à ressentir mais enregistrable par les sismomètres.");
-    break;
+        break;
     case 3 :
         var_dump("Ne cause pas de dégats mais commence à pouvoir être légèrement ressenti.");
-    break;
+        break;
     case 4 :
         var_dump("Séisme capable de faire bouger des objets mais ne causant généralement pas de dégats.");
-    break;
+        break;
     case 5 :
         var_dump("Séisme capable d'engendrer des dégats importants sur de vieux bâtiments ou bien des bâtiments présentants des défauts de construction. Peu de dégats sur des bâtiments modernes.");
-    break;
+        break;
     case 6 :
         var_dump("Fort séisme capable d'engendrer des destructions majeures sur une large distance (180 km) autour de l'épicentre.");
-    break;
+        break;
     case 7 :
         var_dump("Séisme capable de destructions majeures à modérées sur une très large zone en fonction de la distance.");
-    break;
+        break;
     case 8 :
         var_dump("Séisme capable de destructions majeures sur une très large zone de plusieurs centaines de kilomètres.");
-    break;
+        break;
     case 9 :
         var_dump("Séisme capable de tout détruire sur une très vaste zone.");
-    break;
+        break;
+    default :
+        var_dump("Ce nombre n'est pas pris en charge !");
 }
 
 //Exercice 5
@@ -82,7 +84,7 @@ if ($type == 'fire') {
     echo 'Vous avez choisi Salamèche.';
 }
 else {
-    'Vous avez choisi Bulbizarre ou Carapuce !';
+    echo 'Vous avez choisi Bulbizarre ou Carapuce !';
 }
 
 // Exercice 6
@@ -94,7 +96,7 @@ else {
 }
 
 // Exercice 7
-$isOk = True;
+$isOk = False;
 
 if ( $isOk === False ) {
     echo "c'est pas bon !!!";

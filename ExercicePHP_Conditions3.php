@@ -25,7 +25,7 @@ $pointsCoins = 0;
 if ($time < 120 ) {
     $pointsTemps = $pointsTemps + 200;
 }
-elseif ($time >=120 OR $time < 180 ) {
+elseif ($time >=120 && $time < 180 ) {
     $pointsTemps = $pointsTemps + 100; 
 }
 else {
@@ -35,7 +35,7 @@ else {
 if ($coins <= 10 ) {
     $pointsCoins = $pointsCoins + $coins;
 }
-elseif ($coins >10 OR $coins <= 20 ) {
+elseif ($coins >10 && $coins <= 20 ) {
     $pointsCoins = $pointsCoins + $coins * 1.5; 
 }
 else {
