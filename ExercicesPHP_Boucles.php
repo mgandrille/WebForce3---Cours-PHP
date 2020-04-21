@@ -44,20 +44,20 @@ echo "<hr>";
 
  // var_dump(array_count_values($array));
 $j = 0;
-$ecartMini = 100;
+$ecartMini = 10000;
 
 for($i=0; $i < count($array) ; $i++) {
-    $ecart = $array[$i] - $j;
+    $ecart = abs($j - $array[$i]);
     // echo "Il y a un écart de <strong>". ($ecart) . "</strong> entre les chevaux " . $j . " et " . $array[$i];
     if ($ecart < $ecartMini) {
         $ecartMini = $ecart;
-        $cheval = [
+        $chevaux = [
             "cheval1" => $j,
             "cheval2" => $array[$i]   
         ];
     }  
     if ($ecart === $ecartMini) {
-        $cheval[] = [
+        $chevaux[] = [
             "cheval1" => $j,
             "cheval2" => $array[$i]   
         ] ;
@@ -67,11 +67,11 @@ for($i=0; $i < count($array) ; $i++) {
 }
 
 // var_dump($cheval);
-echo "L'écart mini est de <strong> " . $ecartMini . "</strong><br/>";
+echo "L'écart minimum est de <strong> " . $ecartMini . "</strong><br/>";
 echo "On le retrouve pour les chevaux : <br/>";
 
-for($i=0; $i < (count($cheval) - 2) ; $i++) {
-    echo $cheval[$i]["cheval1"] . " et " . $cheval[$i]["cheval2"];
+for($i=0; $i < (count($chevaux) - 2) ; $i++) {
+    echo $chevaux[$i]["cheval1"] . " et " . $chevaux[$i]["cheval2"];
     echo "<br/>";
 }
 
