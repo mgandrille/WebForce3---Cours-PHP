@@ -145,6 +145,89 @@ for($i=1; $i < 10; $i++) {
     echo "<br/>";
 }
 
+echo '<table border="1">';
+for($i=1; $i < 10; $i++) {
+    echo "<tr>";
+    echo "<td>" . $i . "</td>";
+    for($j=1; $j <= 10; $j++) {
+        echo "<td>" . $i*$j ."</td>";
+    };
+    echo "</tr>";
+}
+echo "</table>";
+
+
+echo "<hr>";
+/**
+ * À partir du code suivant, créer un échiquier (un tableau qui alterne des cases noire/blanches sur les lignes et les colonnes)
+ */
+echo "<table border='1'>";
+    for ($i = 1; $i <= 8; $i++) {
+        echo "<tr>";
+        if($i%2 === 0) {
+            for ($j = 1; $j <= 8; $j++) {
+                if($j%2 === 0) {
+                    echo "<td height=30px width=30px style='background-color: black;'></td>";
+                }
+                else {
+                    echo "<td height=30px width=30px style='background-color: white;'></td>";
+                }
+            }
+        }
+        else {
+            for ($j = 1; $j <= 8; $j++) {
+                if($j%2 === 0) {
+                    echo "<td height=30px width=30px style='background-color: white;'></td>";
+                }
+                else {
+                    echo "<td height=30px width=30px style='background-color: black;'></td>";
+                }
+            }
+        }
+        echo "</tr>";
+    }
+echo "</table>";
+
+echo "<br/>";
+//solution optimisée
+echo "<table border='1'>";
+    for ($i = 1; $i <= 8; $i++) {
+        echo "<tr>";
+        for ($j = 1; $j <= 8; $j++) {
+            $total = $i + $j;
+            if($total%2 === 0){
+                echo "<td height=30px width=30px style='background-color: black; color: white;'>".$total."</td>";
+            }else{
+                echo "<td height=30px width=30px style='background-color: white;'>".$total."</td>";
+            }
+        }
+        echo "</tr>";
+    }
+echo "</table>";
+
+
+echo "<hr>";
+/**
+ * Écrire une boucle qui affiche des nombres de 1 à 100.
+ * - Si un nombre est divisible par 3, afficher "Fizz" à la place
+ * - Si un nombre est divisible par 5, afficher "Buzz" à la place
+ * - Si un nombre est divisible par 3 et par 5, afficher "FizzBuzz" à la place
+ */
+
+for($nombre = 1; $nombre <=100; $nombre++) {
+    if($nombre%3 === 0 && $nombre%5 === 0) {
+        echo "FizzBuzz <br/>";
+    } 
+    else if($nombre%5 === 0) {
+        echo "Buzz <br/>";
+    }
+    else if($nombre%3 === 0) {
+        echo "Fizz <br/>";
+    } 
+    else {
+        echo $nombre . "<br/>";
+    }
+}
 
 
 ?>
