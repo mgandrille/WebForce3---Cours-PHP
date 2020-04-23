@@ -322,7 +322,10 @@ function distanceHamming($brinA, $brinB) {
 $a = "GAGCCTACTAACGGGAT";
 $b = "CATCGTAATGACGGCCT";
 
-echo "La distance de Hamming entre ces 2 brins est de " . distanceHamming($a, $b);
+echo "La distance de Hamming entre les brins " . $a . " et " . $b . 
+    " est de " . distanceHamming($a, $b) . "<br/>";
+echo "<br/>";
+
 
 function comparer($longueur, $paire) {
     // contenu brin
@@ -342,11 +345,15 @@ function comparer($longueur, $paire) {
     for($i=0; $i < $paire; $i++) {
         $brinA = contenuBrin($longueur);
         $brinB = contenuBrin($longueur);
+        $resultats[] =  "Les paires " . $brinA . " et " . $brinB . 
+                " ont une distance de Hamming de " . 
+                distanceHamming($brinA, $brinB);
     }
 
-
-
+    return implode("<br/>", $resultats);
 }
+
+echo comparer(15, 6);
 
 
 ?>
