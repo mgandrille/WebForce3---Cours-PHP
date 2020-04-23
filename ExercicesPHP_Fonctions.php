@@ -339,7 +339,7 @@ function comparer($longueur, $paire) {
         return $brin;
     }
 
-    for($i=0, $i < $paire, $i++) {
+    for($i=0; $i < $paire; $i++) {
         $brinA = contenuBrin($longueur);
         $brinB = contenuBrin($longueur);
     }
