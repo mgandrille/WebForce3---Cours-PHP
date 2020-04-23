@@ -79,7 +79,7 @@ function liste($liste) {
     foreach($liste as $element) {
         $elements[] = $element;
     };
-    return "<ul><li>" . implode("</li><li>", $elements) . "</li><ul>";
+    return "<ul><li>" . implode("</li><li>", $elements) . "</li></ul>";
 }
 
 $maListe = ["bijou", "caillou", "chou", "genou", "joujou", "pou", "hibou"];
@@ -158,10 +158,11 @@ function legumesDeSaison($array) {
         echo "<li>" . $saison . " </li> ";
         echo "<ul>";
         foreach($legumes as $legume) {
-            echo "<li>" . $legume . " </li> ";
+            echo "<li>" . $legume . " </li>";
         }
         echo "</ul>";
-    }    
+    } 
+    echo "</ul>";
 }
 
 legumesDeSaison($tableLegumes);
@@ -193,51 +194,27 @@ echo "<hr>";
  * chaque ligne serait un sous-tableau du tableau principal 
  * */
 
-// function trianglePascal($nombre) {
-//     for($i=0; $i < $nombre; $i++) {
-//         $table[] = $i ;
-//     }
-//     var_dump($table);
-//     return 1 . implode(" " , $table) . "<br/>";
-// }
-
-// echo trianglePascal(6);
-
-// $a = 1;
-// echo $a . "<br/>";
-// echo $a . " " . $a . "<br/>";
-// echo $a . " " . $b=$a+$a . " " . $a . "<br/>";
-// echo $a . " " . $c=$a+$b . " " . $c=$a+$b . " " . $a . "<br/>";
-// echo $a . " " . $d=$a+$c . " " . $e=$c+$c . " " . $d=$a+$c . " " . $a . "<br/>";
-
-// $triangle = [
-//     $ligne1 = [1],
-//     $ligne2 = [],
-//     $ligne3 = [],
-// ];
-// var_dump($triangle);
-// $triangle[] = "ligne1";
-// var_dump($triangle);
-// $triangle[] = 1;
-// var_dump($triangle);
-
-$triangle = [
-    [1], 
-    [1,1]
-];
-
-for($i=2; $i < 8; $i++) {
-    $ligne[] = 1;
-    // var_dump($triangle);
-    for($j=0; $j<$i-1 ; $j++) {
-        $ligne[] = $triangle[$i-1][$j] + $triangle[$i-1][$j+1];
+function trianglePascal($nombre) {
+    $triangle = [
+        [1], 
+        [1,1]
+    ];
+    
+    for($i=2; $i < 8; $i++) {
+        $ligne[] = 1;
         // var_dump($triangle);
+        for($j=0; $j<$i-1 ; $j++) {
+            $ligne[] = $triangle[$i-1][$j] + $triangle[$i-1][$j+1];
+            // var_dump($triangle);
+        }
+        $ligne[] = 1;
+        $triangle[] = $ligne;
+        unset($ligne);
     }
-    $ligne[] = 1;
-    $triangle[] = $ligne;
-    unset($ligne);
+    return $triangle; 
 }
-var_dump($triangle);
+
+var_dump(trianglePascal(80));
 
 
 
@@ -251,12 +228,125 @@ echo "<hr>";
  */
 
 
+// function legumesDeSaison($array) {
+//     echo "<ul>";
+//     foreach($array as $saison => $legumes) {
+//         echo "<li>" . $saison . " </li> ";
+//         echo "<ul>";
+//         foreach($legumes as $legume) {
+//             echo "<li>" . $legume . " </li> ";
+//         }
+//         echo "</ul>";
+//     } 
+//     echo "</ul>";
+// }
+
+function listeOrdonnee($array) {
+    echo "<ul>";
+    foreach($array as $key => $value) {
+        if(is_array($value)) {
+            echo "<li>" . $key . " </li> ";
+            listeOrdonnee($value);    
+        }
+        else {
+            if(isset($key) && !is_int($key)) {
+                echo "<li>" . $key . " : " . $value . "</li>";
+            }
+            else {
+                echo "<li>" . $value . " </li> ";
+            }
+        }
+    }
+    echo "</ul>";
+}
+
+$saisons = [
+    "été" => [
+        "aubergines",
+        "tomates" => [
+            "quantité",
+            "prix" => 6
+        ]
+    ],
+    "automne" => [
+        "pommes de terre" => [
+            "quantité" => 12,
+            "prix" => 5
+        ],
+        "carottes" => [
+            "quantité" => 10,
+            "prix" => 6
+        ],
+        "autre légume"
+    ],
+    "hiver" => [
+        "avocats" => [
+            "quantité" => 12,
+            "prix"
+        ],
+        "pêches" => [
+            "quantité" => 10,
+            "prix" => 6
+        ]
+    ]
+];
+
+listeOrdonnee($saisons);
 
 
 
+echo "<hr>";
+/**
+ * Distance de Hamming
+ * https://gist.github.com/tomsihap/6583f017ca858ae74d9221a51f82ba63
+ */
+
+
+function distanceHamming($brinA, $brinB) {
+    $distance="";
+    if(strlen($brinA) === strlen($brinB)) {
+        $tableBrinA = str_split($brinA);
+        $tableBrinB = str_split($brinB);
+        for($i=0; $i < strlen($brinA); $i++) {
+            if($tableBrinA[$i] !== $tableBrinB[$i]) {
+                $distance++;
+            }
+        }
+    return $distance;
+    }
+    else {
+        throw new Exception("Message d'erreur");
+    }
+}
+
+$a = "GAGCCTACTAACGGGAT";
+$b = "CATCGTAATGACGGCCT";
+
+echo "La distance de Hamming entre ces 2 brins est de " . distanceHamming($a, $b);
+
+function comparer($longueur, $paire) {
+    // contenu brin
+    function contenuBrin($longueur) {
+        $nucleotides=["A", "C", "G", "T"];
+        $brin = "";
+    
+        for ($i=0; $i < $longueur; $i++) {
+            $randomIndex = array_rand($nucleotides);
+            $char = $nucleotides[$randomIndex];
+    
+            $brin = $brin . $char;
+        }
+        return $brin;
+    }
+
+    for($i=0, $i < $paire, $i++) {
+        $brinA = contenuBrin($longueur);
+        $brinB = contenuBrin($longueur);
+    }
 
 
 
+}
 
 
 ?>
