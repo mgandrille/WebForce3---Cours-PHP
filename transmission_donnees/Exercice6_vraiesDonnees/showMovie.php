@@ -5,12 +5,13 @@ $request = "SELECT * FROM movies";
 $response = $bdd->query($request);
 $movies = $response->fetchAll(PDO::FETCH_ASSOC);
 
-// var_dump($bdd);
-// var_dump($request);
-// var_dump($response);
-// var_dump($movies);
+$colonne = array_column($movies, 'id');
+$keyMovie = array_search($_GET['id'], $colonne); 
+$movieFound =  $movies[$keyMovie];
+
 
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -24,15 +25,25 @@ $movies = $response->fetchAll(PDO::FETCH_ASSOC);
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
-        <h1>Liste des films</h1>
+        <h1>Détail du film choisi</h1>
+        <!-- <p>Vous avez demandé le film n° : <?= $_GET['id'] ; ?></p> -->
+        
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <ul>
-                    <?php foreach($movies as $movie) : ?>
-                    <li><a href="showMovie.php?id=<?=$movie["id"] ?>"><strong><?= $movie["title"] ?></strong></a></li>
-                    <?php endforeach ; ?>
-                    </ul>
+                    <div class="card">
+                        <div class="card-header">
+                            <h2><?= $movieFound["title"] ?></h2>
+                        </div>
+                        <div class="card-body">
+                            <p>Réalisateur : <?= $movieFound["director"] ?></p>
+                            <p>Catégorie : <?= $movieFound["category"] ?></p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Date de sortie : <?= substr($movieFound["release_date"], -19, 4) ?>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
