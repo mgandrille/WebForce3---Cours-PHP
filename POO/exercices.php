@@ -5,10 +5,15 @@ class Personnage {
     public $strength = 0;
     public $power = 0;
 
-    public function __construct($newName) {
+    public function __construct($newName, $newStrength = null, $newPower = null) {
         $this->name = $newName;
-        $this->strength;
-        $this->power;
+
+        if($newStrength) {
+            $this->strength = $newStrength;
+        }
+        if($newPower) {
+            $this->power = $newPower;
+        }
     }
 
     public function getName() {
