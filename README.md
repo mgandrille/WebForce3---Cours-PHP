@@ -8,6 +8,6 @@
 
 - POO : 
 
-* [Exercices](POO/exercices.php)
+  * [Exercices](POO/exercices.php)
 
-* [Zoo MVC](https://github.com/mgandrille/wf3zooMVC)
+  * [Zoo MVC](https://github.com/mgandrille/wf3zooMVC)
