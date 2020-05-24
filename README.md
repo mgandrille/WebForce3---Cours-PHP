@@ -17,4 +17,4 @@
   Here are my evaluations on PHP :
   
   - Basis of PHP : [CRUD](https://github.com/mgandrille/wf3PHPevaluation3)
-  - PHP PDO : [MVC](https://github.com/mgandrille/wf3PHPevaluation4)
+  - PHP OOP : [MVC](https://github.com/mgandrille/wf3PHPevaluation4)
