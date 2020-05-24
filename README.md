@@ -11,3 +11,10 @@
   * [Exercices](POO/exercices.php)
 
   * [Zoo MVC](https://github.com/mgandrille/wf3zooMVC)
+  
+  ---
+  
+  Here are my evaluations on PHP :
+  
+  - Basis of PHP : [CRUD](https://github.com/mgandrille/wf3PHPevaluation3)
+  - PHP PDO : [MVC](https://github.com/mgandrille/wf3PHPevaluation4)
