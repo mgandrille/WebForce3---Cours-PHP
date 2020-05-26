@@ -3,11 +3,12 @@ session_start();
 require __DIR__ . '/functions.php';
 $ships = getShips();
 
+
 $errorMessage = null;
 if (isset($_SESSION['error'])) {
     switch ($_SESSION['error']) {
         case 'missing_data':
-            $errorMessage = 'N\'oubliez pas de séléctionner des vaisseaux pour le combat !';
+            $errorMessage = 'N\'oubliez pas de sélectionner des vaisseaux pour le combat !';
             break;
         case 'bad_ships':
             $errorMessage = 'Vous essayez de combattre avec un vaisseau non enregistré dans les registres galactiques.';
@@ -53,10 +54,10 @@ if (isset($_SESSION['error'])) {
     <tbody>
         <?php foreach ($ships as $ship) : ?>
             <tr>
-                <td><?= $ship['name'] ?></td>
-                <td><?= $ship['weapon_power'] ?></td>
-                <td><?= $ship['spatiodrive_booster'] ?></td>
-                <td><?= $ship['strength'] ?></td>
+                <td><?= $ship->getName() ?></td>
+                <td><?= $ship->getWeaponPower() ?></td>
+                <td><?= $ship->getSpatiodriveBooster() ?></td>
+                <td><?= $ship->getStrength() ?></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
@@ -71,7 +72,7 @@ if (isset($_SESSION['error'])) {
             <select class="center-block form-control dropdown-toggle" name="ship1_name">
                 <option value="">Choisir un vaisseau</option>
                 <?php foreach ($ships as $key => $ship) : ?>
-                    <option value="<?php echo $key; ?>"><?php echo $ship['name']; ?></option>
+                    <option value="<?php echo $key; ?>"><?php echo $ship->getNameAndSpecs(); ?></option>
                 <?php endforeach; ?>
             </select>
             <br>
@@ -81,7 +82,7 @@ if (isset($_SESSION['error'])) {
             <select class="center-block form-control dropdown-toggle" name="ship2_name">
                 <option value="">Choisir un vaisseau</option>
                 <?php foreach ($ships as $key => $ship) : ?>
-                    <option value="<?php echo $key; ?>"><?php echo $ship['name']; ?></option>
+                    <option value="<?php echo $key; ?>"><?php echo $ship->getNameAndSpecs(); ?></option>
                 <?php endforeach; ?>
             </select>
             <br>

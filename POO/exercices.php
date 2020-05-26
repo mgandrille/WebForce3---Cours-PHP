@@ -11,21 +11,23 @@ class Personnage {
         if($newStrength) {
             $this->strength = $newStrength;
         }
+// ecriture ternaire : $this->strength = ($strength) ? $strength : null ;
+// depuis php7 : $this->strength = $strength ?? this->strength ;
         if($newPower) {
             $this->power = $newPower;
         }
     }
 
     public function getName() {
-        echo "Le nom du personnage est " . $this->name;
+        return "Le nom du personnage est " . $this->name;
     }
 
     public function getNameAndSpecs($longString = false) {
         if ($longString === false) {
-            echo "Le nom du personnage est " . $this->name . " (il possède une force de  " . $this->power . " et une résistance de " . $this->strength . ")." ;
+            return "Le nom du personnage est " . $this->name . " (il possède une force de  " . $this->power . " et une résistance de " . $this->strength . ")." ;
         }
         else {
-            $this->getName();
+            return $this->getName();
         }
     }
 

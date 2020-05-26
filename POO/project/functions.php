@@ -1,32 +1,50 @@
 <?php
 
+require __DIR__.'/lib/Ship.php';
+
 function getShips() {
-    return [
-        'starfighter' => [
-            'name'          => 'Jedi Starfighter',
-            'weapon_power'  => 5,
-            'spatiodrive_booster'   => 15,
-            'strength'   =>  30,
-        ],
-        'x_wing_fighter' => [
-            'name'          => 'X-Wing Fighter',
-            'weapon_power'  => 2,
-            'spatiodrive_booster'   => 2,
-            'strength'   =>  70,
-        ],
-        'super_star_destroyer' => [
-            'name'          => 'Super Star Destroyer',
-            'weapon_power'  => 70,
-            'spatiodrive_booster'   => 0,
-            'strength'   =>  500,
-        ],
-        'rz1_a_wing_interceptor' => [
-            'name'          => 'RZ1 A-Wing Interceptor',
-            'weapon_power'  => 4,
-            'spatiodrive_booster'   => 4,
-            'strength'   =>  50,
-        ]
-    ];
+
+    $ships = []; // Futur array d'objets vaisseaux Ships
+
+    // On créée un Ship
+    $ship1 = new Ship();
+    $ship1->setName('Jedi Starfighter');
+    $ship1->setWeaponPower(5);
+    $ship1->setSpatiodriveBooster(15);
+    $ship1->setStrength(30);
+
+    // On ajoute le ship "$ship1" créé dans le tableau de vaisseaux, $ships.
+    $ships['starfighter'] = $ship1;
+
+    // On créée un deuxième Ship
+    $ship2 = new Ship();
+    $ship2->setName('X-Wing Fighter');
+    $ship2->setWeaponPower(2);
+    $ship2->setSpatiodriveBooster(2);
+    $ship2->setStrength(70);
+
+    $ships['x_wing_fighter'] = $ship2;
+
+    // On créée un troisième Ship
+    $ship3 = new Ship();
+    $ship3->setName('Super Star Destroyer');
+    $ship3->setWeaponPower(70);
+    $ship3->setSpatiodriveBooster(0);
+    $ship3->setStrength(500);
+
+    $ships['super_star_destroyer'] = $ship3;
+
+    // On créée un quatrième Ship
+    $ship4 = new Ship();
+    $ship4->setName('RZ1 A-Wing Interceptor');
+    $ship4->setWeaponPower(4);
+    $ship4->setSpatiodriveBooster(4);
+    $ship4->setStrength(50);
+
+    $ships['rz1_a_wing_interceptor'] = $ship4;
+
+    // On retourne l'array de vaisseaux
+    return $ships;
 }
 
 /**

@@ -50,9 +50,9 @@ var_dump($outcome);
         <h2>Le combat :</h2>
         <p>
             <!-- On affiche la quantité de vaisseaux (au pluriel si la quantité est supérieure à 1) -->
-            <?php echo $ship1Quantity; ?> <?php echo $ship1['name']; ?><?php echo $ship1Quantity > 1 ? 's' : ''; ?>
+            <?php echo $ship1Quantity; ?> <?php echo $ship1->setName(); ?><?php echo $ship1Quantity > 1 ? 's' : ''; ?>
             <strong>VERSUS</strong>
-            <?php echo $ship2Quantity; ?> <?php echo $ship2['name']; ?><?php echo $ship2Quantity > 1 ? 's' : ''; ?>
+            <?php echo $ship2Quantity; ?> <?php echo $ship2->setName(); ?><?php echo $ship2Quantity > 1 ? 's' : ''; ?>
         </p>
     </div>
 </div>
